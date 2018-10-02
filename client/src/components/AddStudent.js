@@ -1,47 +1,47 @@
-import React, { Component } from 'react';
-import{
-	BrowserRouter as Router,
-	Route,
-	NavLink,
-	Redirect,
-	Prompt,
-	Switch
-} from 'react-router-dom';
+import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Redirect,
+  Prompt,
+  Switch
+} from "react-router-dom";
 
 class AddStudent extends Component {
   state = {
-    firstName: '',
-    lastName:'',
-    title:'',
-    nationality:'',
-    skills:'',
-    aim:'',
-    vision:'',
-    motivation:'',
-    quote:'',
-    joinedDate:'',
-    src:null
+    firstName: "",
+    lastName: "",
+    title: "",
+    nationality: "",
+    skills: "",
+    aim: "",
+    vision: "",
+    motivation: "",
+    quote: "",
+    joinedDate: "",
+    src: null
   };
 
   onChange = e => {
     switch (e.target.name) {
-      case 'src':
+      case "src":
         this.setState({ src: e.target.files[0] });
         break;
       default:
         this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state.src)
+        console.log(this.state.src);
     }
   };
 
   handleAddInput = e => {
     e.preventDefault();
     this.props.handleAddInput(this.state);
-  }
+  };
   render() {
     return (
       <div className="App-form">
-      <form  encType="multipart/form-data" method="POST">
+        <form encType="multipart/form-data" method="POST">
           <label for="firstName">First Name</label>
           <input
             type="text"
@@ -133,18 +133,13 @@ class AddStudent extends Component {
             onChange={this.onChange}
           />
           <label for="image">Upload Image</label>
-          <input
-            type="file"
-            name="src"
-            id="src"
-            onChange={this.onChange}
-          />
+          <input type="file" name="src" id="src" onChange={this.onChange} />
           <button onClick={this.handleAddInput} className="save-button">
-          <NavLink exact to="/">
-           Save
-          </NavLink>
+            <NavLink exact to="/">
+              Save
+            </NavLink>
           </button>
-      </form>
+        </form>
       </div>
     );
   }
